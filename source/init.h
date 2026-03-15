@@ -46,6 +46,13 @@ void inits() {
 	fbwidth = rmode->fbWidth;
 	fbheight = rmode->efbHeight;
 
+	float yscale = GX_GetYScaleFactor(rmode->efbHeight,rmode->xfbHeight);
+	int xfbHeight = GX_SetDispCopyYScale(yscale);
+	GX_SetDispCopySrc(0,0,rmode->fbWidth,rmode->efbHeight);
+	GX_SetDispCopyDst(rmode->fbWidth,xfbHeight);
+
+	tall = rmode->xfbHeight > 480;
+
 	resetViewport();
 	GX_SetCopyFilter(GX_FALSE, NULL, GX_FALSE, NULL);
 	GX_SetFieldMode(rmode->field_rendering,((rmode->viHeight==2*rmode->xfbHeight)?GX_ENABLE:GX_DISABLE));

@@ -296,7 +296,10 @@ int main(int argc, char **argv) {
 
 		VIDEO_SetNextFramebuffer(xfb);
 		
-		if(animationadvance && aframe < 864) aframe++;
+		if(animationadvance && aframe < 864) { 
+			aframe++;
+			if(tall && (aframe % 6) == 0) aframe++;
+		}
 
 		rframe++;
 		VIDEO_Flush();

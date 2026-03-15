@@ -13,3 +13,5 @@ Mtx view, model, viewreflec;
 Mtx44 perspective, overlaypersp; 
 
 Mtx fullQuadMv;
+
+int tall = 0;
